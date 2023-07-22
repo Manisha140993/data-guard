@@ -40,11 +40,8 @@ function DataGuardTabs() {
 
   //on page reload
   useEffect(() => {
-    if(tabsData.tabdata) {
-      const firstTab = tabsData.tabdata[Object.keys(tabsData.tabdata)[0]].title;
-      if (window.location.pathname !== "/"+firstTab) {
-        window.location.href = "/"+firstTab;
-      }
+    if (window.location.pathname !== "/") {
+      window.location.replace("/");
     }
   }, []);
 
