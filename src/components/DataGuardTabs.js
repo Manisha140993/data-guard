@@ -9,7 +9,7 @@ import FiberSmartRecordIcon from "@mui/icons-material/FiberSmartRecord";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import DataGuardCards from "./DataGuardCards";
 import dataGuardService from "../services/DataGuardServices";
-import "../styles/Data-guard-tabs.scss";
+import "../styles/DataGuardTabs.scss";
 
 function DataGuardTabs() {
   const activeColor = "#5ac88d";
@@ -19,9 +19,7 @@ function DataGuardTabs() {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleChange = (event, newValue) => {
-    setTimeout(() => {
-      setValue(newValue);
-    });
+    setValue(newValue);
   };
 
   const handleIconClick = () => {
@@ -37,7 +35,6 @@ function DataGuardTabs() {
         console.error(error);
       }
     };
-    console.log("fetching data");
     fetchData();
   }, []);
 

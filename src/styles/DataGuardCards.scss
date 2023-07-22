@@ -1,0 +1,64 @@
+.data-guard-wrapper {
+  .data-guard-card {
+    h4 {
+      font-weight: normal;
+      text-align: left;
+      padding: 0px 30px;
+    }
+    .data-guard-grid {
+      justify-content: start;
+      padding: 0px 35px;
+      @media (max-width: 767px) {
+        justify-content: center;
+        padding: 0px;
+      }
+      .data-guard-grid-item {
+        max-width: 370px;
+        @media (max-width: 767px) {
+          max-width: 80%;
+          &:last-child {
+            padding-bottom: 20px;
+          }
+        }
+        & > div {
+          min-height: 180px;
+          border: 1px solid #ccc;
+          @media (min-width: 768px) {
+            min-height: 200px;
+          }
+        }
+        &.disabled > div {
+          opacity: 50%;
+          pointer-events: none;
+        }
+      }
+      .data-guard-description {
+        text-align: left;
+        font-size: 14px;
+        line-height: 1.5;
+        padding-right: 30%;
+        @media (max-width: 768px) {
+          padding-right: 15px;
+        }
+      }
+      .data-guard-card-header {
+        text-align: left;
+        padding: 0px 16px;
+        span {
+          font-size: 1.2rem;
+        }
+        .data-guard-card-icon {
+          padding: 10px 10px 0 10px;
+        }
+        .data-guard-card-icon-text {
+          font-size: 12px;
+          font-weight: bold;
+        }
+      }
+    }
+    @media (max-width: 767px) {
+      height: 100vh;
+      overflow: scroll;
+    }
+  }
+}

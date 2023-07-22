@@ -67,7 +67,7 @@ export function useDataGuardCards(props) {
     const handleSubmit = async () => {
       try {
         const response = await dataGuardService.post(allData);
-        console.log("Post request successful:", response);
+        console.log("Post request successful");
       } catch (error) {
         console.error("Error in post request:", error);
       }

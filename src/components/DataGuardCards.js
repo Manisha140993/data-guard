@@ -3,6 +3,7 @@ import { Grid, Card, CardContent, CardHeader, IconButton, Typography } from "@mu
 import ToggleOffIcon from "@mui/icons-material/ToggleOff";
 import ToggleOnIcon from "@mui/icons-material/ToggleOn";
 import { useDataGuardCards } from "../hooks/useDataGuardHooks";
+import "../styles/DataGuardCards.scss";
 
 function DataGuardCards(props) {
   const activeColor = "#5ac88d";

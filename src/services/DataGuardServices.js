@@ -3,13 +3,11 @@ const apiUrl = "http://localhost:5000/data";
 const dataGuardService = {
   get: async () => {
     try {
-        console.log("fetching data try");
       const response = await fetch(apiUrl);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      console.log("fetching data response");
       return data;
     } catch (error) {
       throw new Error("Error fetching data:", error);

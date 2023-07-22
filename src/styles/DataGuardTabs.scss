@@ -1,0 +1,55 @@
+.data-guard-wrapper {
+  .data-guard-tabs {
+    width: 20%;
+    background-color: #f1f1f1;
+    display: inline-block;
+    position: relative;
+    height: 100vh;
+    h1 {
+      color: #0e354c;
+      font-weight: normal;
+      @media (max-width: 767px) {
+        font-size: 22px;
+      }
+      span {
+        font-weight: bold;
+      }
+    }
+    .tabs-content {
+      border: none;
+      a {
+        justify-content: left;
+        min-height: 40px;
+        &.Mui-selected {
+          background: white;
+          color: #2c2c2c;
+        }
+      }
+      .indicator {
+        left: 0;
+        padding: 0 2px;
+        background-color: #c52f3f;
+      }
+      .data-guard-tab-name {
+        text-transform: capitalize;
+      }
+    }
+    .all-plugins {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding-bottom: 15px;
+      background-image: linear-gradient(transparent 40%, #abdfc2);
+      span {
+        font-size: 14px;
+      }
+      &.turn-off {
+        background-image: linear-gradient(transparent 40%, #dd939a);
+      }
+    }
+  }
+  .data-guard-tab-content {
+    width: 80%;
+    display: inline-block;
+  }
+}
