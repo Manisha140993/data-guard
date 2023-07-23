@@ -1,4 +1,4 @@
-const apiUrl = "http://localhost:5000/data";
+const apiUrl = "https://23ca-2a00-20-3046-6640-bd82-2314-2b94-6280.ngrok.io/data";
 
 const dataGuardService = {
   get: async () => {
