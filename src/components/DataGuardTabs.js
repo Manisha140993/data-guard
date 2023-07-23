@@ -1,5 +1,4 @@
 import React, { useState , useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Grid, Tabs, Tab } from "@mui/material";
 import ToggleOffIcon from "@mui/icons-material/ToggleOff";
 import ToggleOnIcon from "@mui/icons-material/ToggleOn";
@@ -10,21 +9,29 @@ import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import DataGuardCards from "./DataGuardCards";
 import dataGuardService from "../services/DataGuardServices";
 import "../styles/DataGuardTabs.scss";
+import { useNavigate } from 'react-router-dom';
 
-function DataGuardTabs() {
+function DataGuardTabs(props) {
+  const navigate = useNavigate();
+  const activeTab = parseInt(props.activeTabValue);
   const activeColor = "#5ac88d";
-  const inactiveColor = "#c52f3f";
+  const blockedColor = "#c52f3f";
   const [tabsData, setTabsData] = useState([]);
   const [value, setValue] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
 
   const handleChange = (event, newValue) => {
+    navigate(`/${event.target.textContent}`);
     setValue(newValue);
   };
 
   const handleIconClick = () => {
     setIsLiked((prevIsLiked) => !prevIsLiked);
   };
+
+  useEffect(() => {
+    setValue(activeTab);
+  }, [activeTab])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,12 +45,10 @@ function DataGuardTabs() {
     fetchData();
   }, []);
 
-  //on page reload
-  useEffect(() => {
-    if (window.location.pathname !== "/") {
-      window.location.replace("/");
-    }
-  }, []);
+  const navigateToFirstTab = () => {
+    navigate(`/Marketing`);
+    setValue(0);
+  }
 
   const iconMap = {
     "Marketing": <AppsIcon />,
@@ -56,25 +61,23 @@ function DataGuardTabs() {
      {tabsData.tabdata && (
       <>
       <Grid item xs={4} md={2} className="data-guard-tabs">
-        <h1>Data<span>Guard</span></h1>
+        <h1 onClick={navigateToFirstTab}>Data<span>Guard</span></h1>
         <Tabs className="tabs-content" orientation="vertical" variant="scrollable" value={value} onChange={handleChange}
-            TabIndicatorProps={{
-                className: "indicator",
-            }} sx={{ borderRight: 1, borderColor: "divider" }}>
-            {Object.entries(tabsData.tabdata).map(([tabKey, tab]) => (
-                <Tab className="data-guard-tab-name" icon={iconMap[tab.title]} iconPosition="start" label={tab.title} component={Link} to={tab.title} key={tabKey}/>
+            TabIndicatorProps={{className: "indicator"}}> 
+               {Object.entries(tabsData.tabdata).map(([tabKey, tab]) => (
+                  <Tab className="data-guard-tab-name" icon={iconMap[tab.title]} iconPosition="start" label={tab.title} key={tabKey}/>
             ))}
         </Tabs>
 
         <div className={`all-plugins ${isLiked ? "turn-off" : "turn-on"}`}>
           <span>All plugins {isLiked ? "disabled" : "enabled"}</span>
           <IconButton onClick={handleIconClick}>{isLiked ? (
-              <ToggleOffIcon style={{ color: inactiveColor }} sx={{ fontSize: 50 }} />) 
+              <ToggleOffIcon style={{ color: blockedColor }} sx={{ fontSize: 50 }} />) 
               : (<ToggleOnIcon style={{ color: activeColor }} sx={{ fontSize: 50 }} />)}
           </IconButton>
         </div>
       </Grid>
-
+      
       <Grid item xs={8} md={10} className="data-guard-tab-content">
           <DataGuardCards
             cardDetails={tabsData.tabdata[Object.keys(tabsData.tabdata)[value]]} tabTitle={Object.keys(tabsData.tabdata)[value]}

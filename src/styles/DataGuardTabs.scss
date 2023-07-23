@@ -8,6 +8,7 @@
     h1 {
       color: #0e354c;
       font-weight: normal;
+      cursor: pointer;
       @media (max-width: 767px) {
         font-size: 22px;
       }
@@ -17,7 +18,7 @@
     }
     .tabs-content {
       border: none;
-      a {
+      button {
         justify-content: left;
         min-height: 40px;
         &.Mui-selected {

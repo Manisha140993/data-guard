@@ -49,9 +49,9 @@ export function useDataGuardCards(props) {
 
   useEffect(() => {
     const formNewData = (result) => {
-        let activePlugins = result.filter((item) => item.status === "active").map((item) => item.id);
-        let inactivePlugins = result.filter((item) => item.status === "inactive").map((item) => item.id);
-        let disabledPlugins = result.filter((item) => item.status === "disabled").map((item) => item.id);
+        const activePlugins = result.filter((item) => item.status === "active").map((item) => item.id);
+        const inactivePlugins = result.filter((item) => item.status === "inactive").map((item) => item.id);
+        const disabledPlugins = result.filter((item) => item.status === "disabled").map((item) => item.id);
 
         const tabData = {
           title: cardDetails.title,
@@ -66,7 +66,7 @@ export function useDataGuardCards(props) {
     allData.tabdata[tabTitle] = formNewData(result);
     const handleSubmit = async () => {
       try {
-        const response = await dataGuardService.post(allData);
+        await dataGuardService.post(allData);
         console.log("Post request successful");
       } catch (error) {
         console.error("Error in post request:", error);
