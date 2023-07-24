@@ -18,7 +18,7 @@ function DataGuardTabs(props) {
   const blockedColor = "#c52f3f";
   const [tabsData, setTabsData] = useState([]);
   const [value, setValue] = useState(0);
-  const [isLiked, setIsLiked] = useState(false);
+  const [allPluginsEnabled, setAllPluginsState] = useState(tabsData.isAllPluginsEnabled);
 
   const handleChange = (event, newValue) => {
     navigate(`/${event.target.textContent}`);
@@ -26,7 +26,7 @@ function DataGuardTabs(props) {
   };
 
   const handleIconClick = () => {
-    setIsLiked((prevIsLiked) => !prevIsLiked);
+    setAllPluginsState((prevIsLiked) => !prevIsLiked);
   };
 
   useEffect(() => {
@@ -69,11 +69,11 @@ function DataGuardTabs(props) {
             ))}
         </Tabs>
 
-        <div className={`all-plugins ${isLiked ? "turn-off" : "turn-on"}`}>
-          <span>All plugins {isLiked ? "disabled" : "enabled"}</span>
-          <IconButton onClick={handleIconClick}>{isLiked ? (
-              <ToggleOffIcon style={{ color: blockedColor }} sx={{ fontSize: 50 }} />) 
-              : (<ToggleOnIcon style={{ color: activeColor }} sx={{ fontSize: 50 }} />)}
+        <div className="all-plugins">
+          <span>All plugins {allPluginsEnabled ? "enabled" : "disabled"}</span>
+          <IconButton onClick={handleIconClick}>{allPluginsEnabled ? (
+            <ToggleOnIcon style={{ color: activeColor }} sx={{ fontSize: 50 }} />)
+              : (<ToggleOffIcon style={{ color: blockedColor }} sx={{ fontSize: 50 }} />)}
           </IconButton>
         </div>
       </Grid>
@@ -81,7 +81,7 @@ function DataGuardTabs(props) {
       <Grid item xs={8} md={10} className="data-guard-tab-content">
           <DataGuardCards
             cardDetails={tabsData.tabdata[Object.keys(tabsData.tabdata)[value]]} tabTitle={Object.keys(tabsData.tabdata)[value]}
-            plugins={tabsData.plugins} allPlugins={isLiked} allData={tabsData}
+            plugins={tabsData.plugins} allPluginsEnabled={allPluginsEnabled} allData={tabsData}
           />
       </Grid>
       </>

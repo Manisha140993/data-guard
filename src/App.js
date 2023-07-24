@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import "./index.css";
 import DataGuardTabs from "./components/DataGuardTabs";
-import { BrowserRouter as Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 const App = () => {
   return (

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import dataGuardService from "../services/DataGuardServices";
 
 export function useDataGuardCards(props) {
-  const { cardDetails, plugins, tabTitle, allData } = props;
+  const { cardDetails, plugins, tabTitle, allPluginsEnabled, allData } = props;
   const [result, setResult] = useState([]);
 
   const handleIconClick = (id) => {
@@ -27,7 +27,6 @@ export function useDataGuardCards(props) {
           status: status,
           name: plugins[item].title,
           description: plugins[item].description,
-          tabName: tabTitle
         }));
         return newItems;
     };
@@ -45,7 +44,7 @@ export function useDataGuardCards(props) {
 
     setResult(sortArray);
 
-  }, [cardDetails, plugins, tabTitle]);
+  }, [cardDetails, plugins]);
 
   useEffect(() => {
     const formNewData = (result) => {
@@ -64,6 +63,7 @@ export function useDataGuardCards(props) {
     };
 
     allData.tabdata[tabTitle] = formNewData(result);
+    allData.isAllPluginsEnabled = allPluginsEnabled;
     const handleSubmit = async () => {
       try {
         await dataGuardService.post(allData);
@@ -74,7 +74,7 @@ export function useDataGuardCards(props) {
     };
     handleSubmit();
     
-  }, [result]);
+  }, [result, allPluginsEnabled]);
 
   return { result, handleIconClick };
 }

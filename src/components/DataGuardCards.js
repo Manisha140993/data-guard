@@ -8,15 +8,15 @@ import "../styles/DataGuardCards.scss";
 function DataGuardCards(props) {
   const activeColor = "#5ac88d";
   const inactiveColor = "#c52f3f";
-  const { cardDetails, tabTitle, plugins, allData } = props;
-  const { result, handleIconClick } = useDataGuardCards({ cardDetails, plugins, tabTitle, allData });
+  const { cardDetails, tabTitle, plugins,allPluginsEnabled, allData } = props;
+  const { result, handleIconClick } = useDataGuardCards({ cardDetails, plugins, tabTitle, allPluginsEnabled, allData });
 
   return (
     <div className="data-guard-card">
       <h4>{cardDetails.title} Plugins</h4>
       <Grid container spacing={5} className="data-guard-grid">
         {result.map((item) => (
-          <Grid item xs={12} md={4} sm={6} className={`data-guard-grid-item ${item.status === "disabled" || props.allPlugins ? "disabled" : ""}`} key={item.id}>
+          <Grid item xs={12} md={4} sm={6} className={`data-guard-grid-item ${item.status === "disabled" || allPluginsEnabled ? "" : "disabled"}`} key={item.id}>
             <Card>
               <CardHeader className="data-guard-card-header"
                 action={

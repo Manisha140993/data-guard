@@ -10,31 +10,29 @@
         "title": "Marketing",
         "icon": "icon-marketing",
         "active": [
-          "plugin5"
+          "plugin1",
+          "plugin2",
+          "plugin4"
         ],
         "disabled": [
           "plugin3"
         ],
         "inactive": [
-          "plugin1",
-          "plugin2",
-          "plugin4",
+          "plugin5",
           "plugin6"
         ]
       },
       "tab2": {
         "title": "Finance",
         "icon": "icon-finance",
-        "active": [
-          "plugin7",
-          "plugin8"
-        ],
+        "active": [],
         "disabled": [
-          "plugin9"
-        ],
-        "inactive": [
+          "plugin7",
+          "plugin8",
+          "plugin9",
           "plugin10"
-        ]
+        ],
+        "inactive": []
       },
       "tab3": {
         "title": "Personnel",
@@ -103,7 +101,8 @@
         "title": "Plugin 13",
         "description": "Dolor laboris culpa ipsum aliqua velit mollit."
       }
-    }
+    },
+    "isAllPluginsEnabled": true
   },
   "errors": []
 }
