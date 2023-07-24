@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import dataGuardService from "../services/DataGuardServices";
 
 export function useDataGuardCards(props) {
-  const { cardDetails, plugins, tabTitle, allPluginsEnabled, allData } = props;
+  const { cardDetails, plugins, tabTitle, allData } = props;
   const [result, setResult] = useState([]);
 
   const handleIconClick = (id) => {
@@ -63,7 +63,6 @@ export function useDataGuardCards(props) {
     };
 
     allData.tabdata[tabTitle] = formNewData(result);
-    allData.isAllPluginsEnabled["status"] = allPluginsEnabled;
     const handleSubmit = async () => {
       try {
         await dataGuardService.post(allData);
@@ -74,7 +73,7 @@ export function useDataGuardCards(props) {
     };
     handleSubmit();
     
-  }, [result, allPluginsEnabled]);
+  }, [result]);
 
   return { result, handleIconClick };
 }
