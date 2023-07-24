@@ -16,7 +16,7 @@ function DataGuardCards(props) {
       <h4>{cardDetails.title} Plugins</h4>
       <Grid container spacing={5} className="data-guard-grid">
         {result.map((item) => (
-          <Grid item xs={12} md={4} sm={6} className={`data-guard-grid-item ${item.status === "disabled" || allPluginsEnabled ? "" : "disabled"}`} key={item.id}>
+          <Grid item xs={12} md={4} sm={6} className={`data-guard-grid-item ${(item.status === "disabled" || !allPluginsEnabled) ? "disabled" : ""}`} key={item.id}>
             <Card>
               <CardHeader className="data-guard-card-header"
                 action={

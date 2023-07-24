@@ -18,7 +18,7 @@ function DataGuardTabs(props) {
   const blockedColor = "#c52f3f";
   const [tabsData, setTabsData] = useState([]);
   const [value, setValue] = useState(0);
-  const [allPluginsEnabled, setAllPluginsState] = useState(tabsData.isAllPluginsEnabled);
+  const [allPluginsEnabled, setAllPluginsState] = useState(null);
 
   const handleChange = (event, newValue) => {
     navigate(`/${event.target.textContent}`);
@@ -44,6 +44,12 @@ function DataGuardTabs(props) {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (tabsData && tabsData.isAllPluginsEnabled) {
+      setAllPluginsState(tabsData.isAllPluginsEnabled.status);
+    }
+  }, [tabsData]);
 
   const navigateToFirstTab = () => {
     navigate(`/Marketing`);

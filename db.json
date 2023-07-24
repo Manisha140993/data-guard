@@ -25,14 +25,16 @@
       "tab2": {
         "title": "Finance",
         "icon": "icon-finance",
-        "active": [],
-        "disabled": [
+        "active": [
           "plugin7",
-          "plugin8",
-          "plugin9",
-          "plugin10"
+          "plugin8"
         ],
-        "inactive": []
+        "disabled": [
+          "plugin9"
+        ],
+        "inactive": [
+          "plugin10"
+        ]
       },
       "tab3": {
         "title": "Personnel",
@@ -102,7 +104,9 @@
         "description": "Dolor laboris culpa ipsum aliqua velit mollit."
       }
     },
-    "isAllPluginsEnabled": true
+    "isAllPluginsEnabled": {
+      "status": true
+    }
   },
   "errors": []
 }

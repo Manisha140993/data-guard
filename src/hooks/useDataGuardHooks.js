@@ -63,7 +63,7 @@ export function useDataGuardCards(props) {
     };
 
     allData.tabdata[tabTitle] = formNewData(result);
-    allData.isAllPluginsEnabled = allPluginsEnabled;
+    allData.isAllPluginsEnabled["status"] = allPluginsEnabled;
     const handleSubmit = async () => {
       try {
         await dataGuardService.post(allData);
