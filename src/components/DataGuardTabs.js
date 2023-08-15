@@ -61,7 +61,7 @@ function DataGuardTabs(props) {
      {tabsData.tabdata && (
       <>
       <Grid item xs={4} md={2} className="data-guard-tabs">
-        <h1 onClick={navigateToFirstTab}>Data<span>Guard</span></h1>
+        <h1 onClick={navigateToFirstTab}>Data<span>Guard Test</span></h1>
         <Tabs className="tabs-content" orientation="vertical" variant="scrollable" value={value} onChange={handleChange}
             TabIndicatorProps={{className: "indicator"}}> 
                {Object.entries(tabsData.tabdata).map(([tabKey, tab]) => (
